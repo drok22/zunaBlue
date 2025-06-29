@@ -9,9 +9,8 @@ import StorePage from "./pages/StorePage";
 export default function App() {
   return (
     <Router>
-      <div style={{ display: "flex" }}>
         <Sidebar />
-        <div style={{ marginLeft: 200, padding: 10, flex:'1 1 100%' }}>
+        <div style={{ marginLeft: 200, padding: 10, flex:1 }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/store" element={<StorePage />} />
@@ -20,7 +19,6 @@ export default function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </div>
-      </div>
     </Router>
   );
 }
