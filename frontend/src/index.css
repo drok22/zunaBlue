@@ -95,6 +95,7 @@ button:focus-visible {
   top: 0;
   transition: width 0.3s ease;
   overflow: hidden;
+  z-index: 100;
 
 }.sidebar.collapsed {
   width: 100px;

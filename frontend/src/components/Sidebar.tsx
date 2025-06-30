@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+type Props = {
+  collapsed: boolean;
+  setCollapsed: (val: boolean) => void;
+};
 
+export default function Sidebar({ collapsed, setCollapsed }: Props) {
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-      <button
-        className="toggle-btn"
-        onClick={() => setCollapsed((prev) => !prev)}
-      >
+      <button className="toggle-btn" onClick={() => setCollapsed(!collapsed)}>
         🟰
       </button>
 

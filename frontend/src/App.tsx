@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CartPage from "./pages/CartPage";
@@ -8,10 +9,21 @@ import StorePage from "./pages/StorePage";
 import StatusPage from "./pages/StatusPage";
 
 export default function App() {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <Router>
-        <Sidebar />
-        <div style={{ marginLeft: 200, padding: 10, flex:1 }}>
+      <div style={{ display: "flex", minHeight: "100vh" }}>
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed}/>
+        <div
+          style={{
+            marginLeft: collapsed ? 100 : 200,
+            padding: 10,
+            flex: 1,
+            minWidth: 0,
+            transition: "margin 0.3s ease",
+          }}
+        >
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/store" element={<StorePage />} />
@@ -21,6 +33,7 @@ export default function App() {
             <Route path="/status" element={<StatusPage />} />
           </Routes>
         </div>
+      </div>
     </Router>
   );
 }
