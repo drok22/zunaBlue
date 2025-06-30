@@ -5,6 +5,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import Sidebar from "./components/Sidebar";
 import StorePage from "./pages/StorePage";
+import StatusPage from "./pages/StatusPage";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/status" element={<StatusPage />} />
           </Routes>
         </div>
     </Router>

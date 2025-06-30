@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 type Product = {
   id: number;
@@ -13,6 +14,7 @@ export default function StorePage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const {addToCart} = useCart()
 
   useEffect(() => {
     fetch("http://localhost:8000/api/products/")
@@ -36,10 +38,23 @@ export default function StorePage() {
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="product-card">
+            className="product-card"
+          >
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>${Number(product.price).toFixed(2)}</p>
+            <button
+              onClick={() =>
+                addToCart({
+                  productId: product.id,
+                  name: product.name,
+                  price: Number(product.price),
+                  image: product.image,
+                })
+              }
+            >
+              Add to Cart
+            </button>
           </Link>
         ))}
       </div>

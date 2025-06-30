@@ -1,9 +1,7 @@
-import DBStatus from '../components/DBStatus'
-
 export default function HomePage() {
   return (
     <div>
-      <DBStatus />
+      <h1> Hello! </h1>
     </div>
-  )
+  );
 }
